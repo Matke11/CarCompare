@@ -1,6 +1,11 @@
-import BannerSection from "@/components/common/BannerSection";
+"use client";
 
-const CarsPage = () => {
+import AllCars from "@/components/AllCars/AllCars";
+import BannerSection from "@/components/common/BannerSection";
+import { mockCarsData } from "@/data/cars";
+
+export default function CarsPage() {
+  if (!mockCarsData) return <div>Loading...</div>;
   return (
     <div className=" items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full">
@@ -8,19 +13,16 @@ const CarsPage = () => {
           bannerTitle="Compare Your Favorite Cars"
           bannerMessage="Find the best car for your needs with just a few clicks."
         />
-        {/* <TopRated
-          title="Top Rated Cars"
+        <AllCars
+          title="All Cars"
           cars={mockCarsData}
-          description="Check out the best-rated cars based on user reviews. Discover which models are leading the market!"
+          description="Check out all cars"
+          actionButtonsInformation={{
+            linkTo: "/compare",
+            text: "Compare Cars",
+          }}
         />
-        <TopRated
-          title="Top Searched Cars"
-          cars={mockCarsData}
-          description="Check out top searched cars based on user searches"
-        /> */}
       </main>
     </div>
   );
-};
-
-export default CarsPage;
+}

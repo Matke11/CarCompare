@@ -1,41 +1,13 @@
 import TopRated from "@/components/TopRatedCars";
 import { CarCardType } from "@/components/TopRatedCars/types";
 import BannerSection from "@/components/common/BannerSection";
+import { mockCarsData } from "@/data/cars";
+import axios from "axios";
 
-const mockCarsData: CarCardType[] = [
-  {
-    carBrand: "Skoda",
-    carEngine: "1.6 TDI",
-    carModel: "SuperB",
-    priceRange: "22000 - 23000 EURO",
-  },
-  {
-    carBrand: "Audi",
-    carEngine: "1.6 TDI",
-    carModel: "A3",
-    priceRange: "22000 - 23000 EURO",
-  },
-  {
-    carBrand: "Mazda",
-    carEngine: "2.0",
-    carModel: "Mazda 6",
-    priceRange: "22000 - 23000 EURO",
-  },
-  {
-    carBrand: "Geely",
-    carEngine: "1.5 Hybrid",
-    carModel: "Atlas Pro",
-    priceRange: "22000 - 23000 EURO",
-  },
-  {
-    carBrand: "Volkswagen",
-    carEngine: "1.6 TDI",
-    carModel: "Golf 5",
-    priceRange: "22000 - 23000 EURO",
-  },
-];
-
-export default function Home() {
+export default async function Home() {
+  // const response = await axios.get("https://freetestapi.com/api/v1/cars");
+  // const cars: CarCardType[] = response.data;
+  const limitedCars = mockCarsData.slice(0, 5);
   return (
     <div className=" items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full">
@@ -46,12 +18,12 @@ export default function Home() {
         />
         <TopRated
           title="Top Rated Cars"
-          cars={mockCarsData}
+          cars={limitedCars}
           description="Check out the best-rated cars based on user reviews. Discover which models are leading the market!"
         />
         <TopRated
           title="Top Searched Cars"
-          cars={mockCarsData}
+          cars={limitedCars}
           description="Check out top searched cars based on user searches"
         />
       </main>
