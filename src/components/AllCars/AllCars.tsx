@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import SectionHeaderV1 from "../common/SectionHeaderV1";
-import { CtaType } from "../common/common";
+import { CtaType, SelectType } from "../common/common";
 import { CarCardType } from "../TopRatedCars/types";
 import CarCard from "../TopRatedCars/CarCard";
 import FiltersAndSorting from "../common/FiltersAndSortingActions";
@@ -20,13 +20,40 @@ const AllCars = ({
   cars,
   actionButtonsInformation,
 }: TopCarsComponentProps) => {
-  const [selectedMake, setSelectedMake] = useState("");
-  const [selectedFuelType, setSelectedFuelType] = useState("");
-  const [selectedYear, setSelectedYear] = useState("");
-  const [sortBy, setSortBy] = useState("");
+  const [selectedMake, setSelectedMake] = useState({
+    value: "",
+    label: "All Makes",
+  });
+  const [selectedFuelType, setSelectedFuelType] = useState({
+    value: "",
+    label: "All Fuel Types",
+  });
+  const [selectedYear, setSelectedYear] = useState({
+    value: "",
+    label: "All Years",
+  });
+  const [sortBy, setSortBy] = useState({
+    value: "",
+    label: "No sort",
+  });
   const [sidePanelState, setSidePanelState] = useState(false);
   const [selectedCars, setSelectedCars] = useState<CarCardType[]>([]);
   const [filteredCars, setFilteredCars] = useState<CarCardType[]>([]);
+
+  const sortingOptions = [
+    {
+      value: "",
+      label: "No sort",
+    },
+    {
+      value: "price",
+      label: "Price Low to High",
+    },
+    {
+      value: "rating",
+      label: "Rating High to Low",
+    },
+  ];
 
   const handleSelectUnselectCar = (selectedCar: CarCardType) => {
     setSelectedCars((prevSelectedCars) =>
@@ -36,21 +63,41 @@ const AllCars = ({
     );
   };
 
-  const makes = [...new Set(cars.map((car) => car.make))];
-  const fuelTypes = [...new Set(cars.map((car) => car.fuelType))];
-  const years = [...new Set(cars.map((car) => car.year))];
+  const makes: SelectType[] = [
+    { value: "", label: "All Makes" },
+    ...[...new Set(cars.map((car) => car.make))].map((make) => ({
+      value: make,
+      label: make,
+    })),
+  ];
+
+  const fuelTypes: SelectType[] = [
+    { value: "", label: "All Fuel Types" },
+    ...[...new Set(cars.map((car) => car.fuelType))].map((fuelType) => ({
+      value: fuelType,
+      label: fuelType,
+    })),
+  ];
+
+  const years: SelectType[] = [
+    { value: "", label: "All Years" },
+    ...[...new Set(cars.map((car) => car.year))].map((year) => ({
+      value: year.toString(),
+      label: year.toString(),
+    })),
+  ];
 
   useEffect(() => {
     let newFilteredCars = cars.filter(
       (car) =>
-        (!selectedMake || car.make === selectedMake) &&
-        (!selectedFuelType || car.fuelType === selectedFuelType) &&
-        (!selectedYear || car.year.toString() === selectedYear)
+        (!selectedMake.value || car.make === selectedMake.value) &&
+        (!selectedFuelType.value || car.fuelType === selectedFuelType.value) &&
+        (!selectedYear.value || car.year.toString() === selectedYear.value)
     );
 
-    if (sortBy === "price") {
+    if (sortBy.value === "price") {
       newFilteredCars = newFilteredCars.sort((a, b) => a.price - b.price);
-    } else if (sortBy === "rating") {
+    } else if (sortBy.value === "rating") {
       newFilteredCars = newFilteredCars.sort((a, b) => b.rating - a.rating);
     }
 
@@ -71,6 +118,7 @@ const AllCars = ({
             setSelectedYear={setSelectedYear}
             sortBy={sortBy}
             setSortBy={setSortBy}
+            sortingOptions={sortingOptions}
             makes={makes}
             fuelTypes={fuelTypes}
             years={years}

@@ -41,16 +41,20 @@ const CarCard = ({
           src={image || "https://via.placeholder.com/400x250?text=Car+Image"}
           alt={`Car ${index + 1}`}
           className="object-cover w-full h-full rounded-t-lg"
+          width={500}
+          height={500}
+          title={`Car ${index + 1}`}
+          loading="lazy"
         />
       </div>
 
       <div className="p-4">
-        <h2
+        <p
           id={`car-${index + 1}`}
           className="text-xl font-semibold text-gray-800 mb-2"
         >
           {make} {model}
-        </h2>
+        </p>
         <div className="text-gray-600 space-y-2">
           {engine && (
             <p>

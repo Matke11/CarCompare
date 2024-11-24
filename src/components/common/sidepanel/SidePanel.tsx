@@ -115,12 +115,12 @@ const SidePanel: React.FC<SidePanelProps> = ({
             </div>
           ) : (
             <div className="no-cars-selected text-center">
-              <h5 role="alert" aria-live="polite" className="no-cars-message">
+              <h3 role="alert" aria-live="polite" className="no-cars-message">
                 <span className="visually-hidden">
                   No cars selected for comparison.
                 </span>
                 Please select cars for comparison.
-              </h5>
+              </h3>
             </div>
           )}
         </div>

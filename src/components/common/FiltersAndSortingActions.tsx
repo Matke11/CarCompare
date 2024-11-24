@@ -1,17 +1,23 @@
 import React from "react";
+import dynamic from "next/dynamic";
+import { SelectType } from "./common";
+import { CSSObjectWithLabel } from "react-select";
+
+const Select = dynamic(() => import("react-select"), { ssr: false });
 
 interface FiltersAndSortingProps {
-  selectedMake: string;
-  setSelectedMake: React.Dispatch<React.SetStateAction<string>>;
-  selectedFuelType: string;
-  setSelectedFuelType: React.Dispatch<React.SetStateAction<string>>;
-  selectedYear: string;
-  setSelectedYear: React.Dispatch<React.SetStateAction<string>>;
-  sortBy: string;
-  setSortBy: React.Dispatch<React.SetStateAction<string>>;
-  makes: string[];
-  fuelTypes: string[];
-  years: number[];
+  selectedMake: SelectType;
+  setSelectedMake: (value: SelectType) => void;
+  selectedFuelType: SelectType;
+  setSelectedFuelType: (value: SelectType) => void;
+  selectedYear: SelectType;
+  setSelectedYear: (value: SelectType) => void;
+  sortBy: SelectType;
+  setSortBy: (value: SelectType) => void;
+  makes: SelectType[];
+  fuelTypes: SelectType[];
+  years: SelectType[];
+  sortingOptions: SelectType[];
 }
 
 const FiltersAndSorting: React.FC<FiltersAndSortingProps> = ({
@@ -23,99 +29,66 @@ const FiltersAndSorting: React.FC<FiltersAndSortingProps> = ({
   setSelectedYear,
   sortBy,
   setSortBy,
+  sortingOptions,
   makes,
   fuelTypes,
   years,
 }) => {
+  const customStyles = {
+    menu: (provided: CSSObjectWithLabel) => ({
+      ...provided,
+      zIndex: 99,
+    }),
+  };
   return (
     <div className="flex flex-wrap justify-center gap-4 mb-8 px-4">
-      <div>
-        {/* <label
-          htmlFor="Brands"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Brands
-        </label> */}
-        <select
-          id="Brands"
-          aria-label="Car Brands"
-          className="p-2 border rounded w-full sm:w-auto text-lg"
+      <div className="w-full max-w-sm">
+        <label className="block mb-1 text-sm text-gray-800">Brands</label>
+        <Select
+          options={makes}
           value={selectedMake}
-          onChange={(e) => setSelectedMake(e.target.value)}
-        >
-          <option value="">All Brands</option>
-          {makes.map((make) => (
-            <option key={make} value={make}>
-              {make}
-            </option>
-          ))}
-        </select>
+          onChange={(selectedOption) =>
+            setSelectedMake(selectedOption as SelectType)
+          }
+          placeholder="Select an option"
+          styles={customStyles}
+        />
       </div>
-
-      <div>
-        {/* <label
-          htmlFor="FuelTypes"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Fuel Types
-        </label> */}
-        <select
-          id="FuelTypes"
-          aria-label="Car Brands"
-          className="p-3 border rounded w-full sm:w-auto text-lg"
+      <div className="w-full max-w-sm">
+        <label className="block mb-1 text-sm text-gray-800">Fuel Type</label>
+        <Select
+          options={fuelTypes}
           value={selectedFuelType}
-          onChange={(e) => setSelectedFuelType(e.target.value)}
-        >
-          <option value="">All Fuel Types</option>
-          {fuelTypes.map((fuelType) => (
-            <option key={fuelType} value={fuelType}>
-              {fuelType}
-            </option>
-          ))}
-        </select>
+          styles={customStyles}
+          onChange={(selectedOption) =>
+            setSelectedFuelType(selectedOption as SelectType)
+          }
+          placeholder="Select an option"
+        />
       </div>
-
-      <div>
-        {/* <label
-          htmlFor="Years"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Years
-        </label> */}
-        <select
-          id="Years"
-          aria-label="Year"
-          className="p-3 border rounded w-full sm:w-auto text-lg"
+      <div className="w-full max-w-sm">
+        <label className="block mb-1 text-sm text-gray-800">
+          Construction Year
+        </label>
+        <Select
+          options={years}
           value={selectedYear}
-          onChange={(e) => setSelectedYear(e.target.value)}
-        >
-          <option value="">All Years</option>
-          {years.map((year) => (
-            <option key={year} value={year}>
-              {year}
-            </option>
-          ))}
-        </select>
+          styles={customStyles}
+          onChange={(selectedOption) =>
+            setSelectedYear(selectedOption as SelectType)
+          }
+          placeholder="Select an option"
+        />
       </div>
-
-      <div>
-        {/* <label
-          htmlFor="Sort"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Sort
-        </label> */}
-        <select
-          id="Sort"
-          aria-label="Sort"
-          className="p-3 border rounded w-full sm:w-auto text-lg"
+      <div className="w-full max-w-sm">
+        <label className="block mb-1 text-sm text-gray-800">Sort by</label>
+        <Select
+          options={sortingOptions}
           value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
-        >
-          <option value="">Sort By</option>
-          <option value="price">Price (Low to High)</option>
-          <option value="rating">Rating (High to Low)</option>
-        </select>
+          styles={customStyles}
+          onChange={(selectedOption) => setSortBy(selectedOption as SelectType)}
+          placeholder="Select an option"
+        />
       </div>
     </div>
   );

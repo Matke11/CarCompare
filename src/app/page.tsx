@@ -1,5 +1,4 @@
 import TopRated from "@/components/TopRatedCars";
-import { CarCardType } from "@/components/TopRatedCars/types";
 import BannerSection from "@/components/common/BannerSection";
 import { mockCarsData } from "@/data/cars";
 
