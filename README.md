@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Car Comparison Dashboard
 
-## Getting Started
+## Overview
 
-First, run the development server:
+Welcome to the **Car Comparison Dashboard**! This project is designed to help users compare different cars based on various features. The app is built using **Next.js** with **TypeScript**, providing a dynamic and responsive web interface.
+
+---
+
+## Table of Contents
+
+1. [Project Setup](#project-setup)
+2. [Running the App](#running-the-app)
+3. [Running Tests](#running-tests)
+4. [Technologies Used](#technologies-used)
+5. [Contributing](#contributing)
+
+---
+
+## Project Setup
+
+### Prerequisites
+
+To run this project, you will need the following software:
+
+- **Node.js** (v14.x or later)
+- **npm** (v6.x or later) or **yarn**
+
+### 1. Clone the Repository
+
+Start by cloning the repository to your local machine:
+
+```bash
+git clone https://github.com/your-username/car-comparison-dashboard.git
+cd car-comparison-dashboard
+```
+
+### 2. Install Dependencies
+
+Once inside the project directory, install the necessary dependencies:
+
+```bash
+npm install
+```
+
+or, if you use **yarn**:
+
+```bash
+yarn install
+```
+
+---
+
+## Running the App
+
+### 1. Development Mode
+
+To start the development server, use the following command:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will start the Next.js development server on `http://localhost:3000`. You can now open this URL in your browser to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Production Mode
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+For a production-ready build, run the following commands:
 
-## Learn More
+```bash
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+This will build the app for production and start the server on `http://localhost:3000`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Running Tests
 
-## Deploy on Vercel
+### 1. Unit Tests
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To run the unit tests for the project, use the following command:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npx jest
+```
+
+This will run all the Jest tests and output the results in the terminal.
+
+---
+
+## Technologies Used
+
+- **Next.js**: A React framework for production with server-side rendering and static site generation.
+- **TypeScript**: A superset of JavaScript that adds static types.
+- **Jest**: A testing framework used to ensure that the application works as expected.
+- **React**: A JavaScript library for building user interfaces.
+
+---
+
+## Contributing
+
+We welcome contributions to this project! To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix (`git checkout -b feature/my-feature`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add new feature'`).
+5. Push your branch (`git push origin feature/my-feature`).
+6. Create a new pull request.
+
+Please make sure to follow the code style and write tests for any new features you add.
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Acknowledgements
+
+- Thanks to the open-source community for the tools and frameworks used in this project.
