@@ -2,12 +2,14 @@ import TopRated from "@/components/TopRatedCars";
 import { CarCardType } from "@/components/TopRatedCars/types";
 import BannerSection from "@/components/common/BannerSection";
 import { mockCarsData } from "@/data/cars";
-import axios from "axios";
 
 export default async function Home() {
-  // const response = await axios.get("https://freetestapi.com/api/v1/cars");
-  // const cars: CarCardType[] = response.data;
-  const limitedCars = mockCarsData.slice(0, 5);
+  const topRatedCars = mockCarsData
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 5);
+  const cheapestCars = mockCarsData
+    .sort((a, b) => a.price - b.price)
+    .slice(0, 5);
   return (
     <div className=" items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full">
@@ -18,13 +20,13 @@ export default async function Home() {
         />
         <TopRated
           title="Top Rated Cars"
-          cars={limitedCars}
+          cars={topRatedCars}
           description="Check out the best-rated cars based on user reviews. Discover which models are leading the market!"
         />
         <TopRated
-          title="Top Searched Cars"
-          cars={limitedCars}
-          description="Check out top searched cars based on user searches"
+          title="Most Cheapest Cars"
+          cars={cheapestCars}
+          description="Check out the cheapest cars!"
         />
       </main>
     </div>

@@ -24,15 +24,7 @@ const TopRated = ({
 
         <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {cars.map((car, index) => (
-            <CarCard
-              key={car.id}
-              index={index}
-              carEngine={car.engine}
-              carModel={car.model}
-              carName={car.make}
-              carPrice={car.price}
-              carImage={car.image}
-            />
+            <CarCard key={car.id} index={index} car={car} />
           ))}
         </section>
 

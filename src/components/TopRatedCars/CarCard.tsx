@@ -3,8 +3,8 @@ import { CarCardType } from "./types";
 interface CarCardProps {
   index: number;
   car: CarCardType;
-  handleCheckboxChange: (carId: number) => void;
-  selectedCars: number[];
+  handleCheckboxChange?: (car: CarCardType) => void;
+  selectedCars?: CarCardType[];
 }
 
 const CarCard = ({
@@ -21,18 +21,20 @@ const CarCard = ({
       className="w-full bg-white shadow-md rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 relative"
       role="article"
       aria-labelledby={`car-${index + 1}`}
-      onClick={() => handleCheckboxChange(car.id)}
+      onClick={handleCheckboxChange && (() => handleCheckboxChange(car))}
     >
-      <div className="absolute top-2 right-2 z-10">
-        <input
-          type="checkbox"
-          id={`car-checkbox-${index}`}
-          className="w-5 h-5"
-          checked={selectedCars.includes(car.id)}
-          aria-label={`Select ${car.make} for comparison`}
-          onChange={() => handleCheckboxChange(car.id)}
-        />
-      </div>
+      {handleCheckboxChange && selectedCars && (
+        <div className="absolute top-2 right-2 z-10">
+          <input
+            type="checkbox"
+            id={`car-checkbox-${index}`}
+            className="w-5 h-5"
+            checked={selectedCars.includes(car)}
+            aria-label={`Select ${car.make} for comparison`}
+            onChange={() => handleCheckboxChange(car)}
+          />
+        </div>
+      )}
 
       <div className="relative w-full h-48 bg-gray-200">
         <img

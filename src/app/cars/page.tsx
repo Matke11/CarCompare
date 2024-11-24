@@ -17,10 +17,6 @@ export default function CarsPage() {
           title="All Cars"
           cars={mockCarsData}
           description="Check out all cars"
-          actionButtonsInformation={{
-            linkTo: "/compare",
-            text: "Compare Cars",
-          }}
         />
       </main>
     </div>
