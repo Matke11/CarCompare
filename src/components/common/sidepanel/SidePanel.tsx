@@ -23,22 +23,27 @@ const SidePanel: React.FC<SidePanelProps> = ({
           aria-hidden={!isOpen}
           onClick={onClose}
           role="presentation"
+          style={{ pointerEvents: !isOpen ? "none" : "auto" }}
         ></div>
       )}
 
       <aside
         className={`side-panel ${isOpen ? "open" : "closed"}`}
-        aria-hidden={!isOpen}
+        aria-hidden="true"
         role="complementary"
         aria-label="Car Comparison Side Panel"
       >
-        <button
-          onClick={onClose}
-          className="close-button"
-          aria-label="Close Comparison Panel"
-        >
-          ✖
-        </button>
+        {isOpen && (
+          <button
+            onClick={onClose}
+            className="close-button"
+            aria-label="Close Comparison Panel"
+            aria-hidden="true"
+          >
+            ✖
+          </button>
+        )}
+
         <div
           className="fixed inset-0 bg-white z-50 transform transition-transform duration-300 ease-in-out w-full p-6 overflow-y-auto shadow-lg"
           role="complementary"

@@ -43,8 +43,14 @@ const FiltersAndSorting: React.FC<FiltersAndSortingProps> = ({
   return (
     <div className="flex flex-wrap justify-center gap-4 mb-8 px-4">
       <div className="w-full max-w-sm">
-        <label className="block mb-1 text-sm text-gray-800">Brands</label>
+        <label className="block mb-1 text-sm text-gray-800" htmlFor="brands">
+          Brands
+        </label>
         <Select
+          id="brands"
+          name="brands"
+          aria-labelledby="brands"
+          aria-describedby="brands-help"
           options={makes}
           value={selectedMake}
           onChange={(selectedOption) =>
@@ -55,8 +61,14 @@ const FiltersAndSorting: React.FC<FiltersAndSortingProps> = ({
         />
       </div>
       <div className="w-full max-w-sm">
-        <label className="block mb-1 text-sm text-gray-800">Fuel Type</label>
+        <label className="block mb-1 text-sm text-gray-800" htmlFor="fuel-type">
+          Fuel Type
+        </label>
         <Select
+          id="fuel-type"
+          name="fuel-type"
+          aria-labelledby="fuel-type"
+          aria-describedby="fuel-type-help"
           options={fuelTypes}
           value={selectedFuelType}
           styles={customStyles}
@@ -67,10 +79,14 @@ const FiltersAndSorting: React.FC<FiltersAndSortingProps> = ({
         />
       </div>
       <div className="w-full max-w-sm">
-        <label className="block mb-1 text-sm text-gray-800">
+        <label className="block mb-1 text-sm text-gray-800" htmlFor="year">
           Construction Year
         </label>
         <Select
+          id="year"
+          name="year"
+          aria-labelledby="year"
+          aria-describedby="year-help"
           options={years}
           value={selectedYear}
           styles={customStyles}
@@ -81,8 +97,14 @@ const FiltersAndSorting: React.FC<FiltersAndSortingProps> = ({
         />
       </div>
       <div className="w-full max-w-sm">
-        <label className="block mb-1 text-sm text-gray-800">Sort by</label>
+        <label className="block mb-1 text-sm text-gray-800" htmlFor="sort">
+          Sort by
+        </label>
         <Select
+          id="sort"
+          name="sort"
+          aria-labelledby="sort"
+          aria-describedby="sort-help"
           options={sortingOptions}
           value={sortBy}
           styles={customStyles}
