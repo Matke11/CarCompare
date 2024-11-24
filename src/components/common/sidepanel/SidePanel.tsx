@@ -74,6 +74,8 @@ const SidePanel: React.FC<SidePanelProps> = ({
                     src={car.image || "https://via.placeholder.com/150"}
                     alt={`${car.make} ${car.model}`}
                     loading="lazy"
+                    width={500}
+                    height={500}
                   />
                   <h3>
                     {car.make} {car.model}
