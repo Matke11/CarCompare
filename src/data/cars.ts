@@ -1,4 +1,4 @@
-import { CarCardType } from "@/components/TopRatedCars/types";
+import { CarCardType } from "./global";
 
 export const mockCarsData: CarCardType[] = [
   {

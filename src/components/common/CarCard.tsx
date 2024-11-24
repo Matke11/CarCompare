@@ -1,4 +1,4 @@
-import { CarCardType } from "./types";
+import { CarCardType } from "@/data/global";
 
 interface CarCardProps {
   index: number;

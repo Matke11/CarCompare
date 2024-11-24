@@ -35,7 +35,7 @@ const FiltersAndSorting: React.FC<FiltersAndSortingProps> = ({
   years,
 }) => {
   const customStyles = {
-    menu: (provided: CSSObjectWithLabel) => ({
+    menu: (provided: CSSObjectWithLabel): CSSObjectWithLabel => ({
       ...provided,
       zIndex: 99,
     }),

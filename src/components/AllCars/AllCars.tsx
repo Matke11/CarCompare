@@ -1,11 +1,12 @@
+"use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import SectionHeaderV1 from "../common/SectionHeaderV1";
 import { CtaType, SelectType } from "../common/common";
-import { CarCardType } from "../TopRatedCars/types";
-import CarCard from "../TopRatedCars/CarCard";
+import CarCard from "../common/CarCard";
 import FiltersAndSorting from "../common/FiltersAndSortingActions";
 import SidePanel from "../common/sidepanel/SidePanel";
+import { CarCardType } from "@/data/global";
 
 interface TopCarsComponentProps {
   title: string;

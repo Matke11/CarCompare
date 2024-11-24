@@ -1,6 +1,6 @@
 import React from "react";
 import "./SidePanel.css";
-import { CarCardType } from "@/components/TopRatedCars/types";
+import { CarCardType } from "@/data/global";
 
 interface SidePanelProps {
   isOpen: boolean;
