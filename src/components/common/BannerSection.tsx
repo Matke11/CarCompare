@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CtaType } from "./common";
+import { CtaType } from "./common.types";
 
 interface BannerSectionProps {
   bannerTitle: string;

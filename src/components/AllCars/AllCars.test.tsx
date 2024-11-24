@@ -1,6 +1,10 @@
-import { CarCardType } from "./global.types";
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import AllCars from "./AllCars";
 
-export const mockCarsData: CarCardType[] = [
+import "@testing-library/jest-dom";
+
+const mockData = [
   {
     color: "Silver",
     engine: "2.0L 4-cylinder",
@@ -35,173 +39,32 @@ export const mockCarsData: CarCardType[] = [
     year: 2021,
     rating: 5,
   },
-  {
-    color: "Red",
-    engine: "5.0L V8",
-    fuelType: "Gasoline",
-    horsepower: 450,
-    id: 3,
-    image:
-      "https://5.imimg.com/data5/JR/GI/GLADMIN-26281511/ford-mustang-car-500x500.png",
-    make: "Ford",
-    mileage: 15000,
-    model: "Mustang",
-    owners: 1,
-    price: 35000,
-    transmission: "Manual",
-    year: 2020,
-    rating: 2.4,
-  },
-  {
-    color: "Blue",
-    engine: "1.5L 4-cylinder",
-    fuelType: "Gasoline",
-    horsepower: 170,
-    id: 4,
-    image: "https://sportcompactwarehouse.com/images/products/AID/KGM33E98.jpg",
-    make: "Chevrolet",
-    mileage: 30000,
-    model: "Equinox",
-    owners: 2,
-    price: 20000,
-    transmission: "Automatic",
-    year: 2019,
-    rating: 4.3,
-  },
-  {
-    color: "Black",
-    engine: "2.5L 4-cylinder",
-    fuelType: "Gasoline",
-    horsepower: 188,
-    id: 5,
-    image:
-      "https://drivesparks.com/wp-content/uploads/sites/39/2022/04/Group-2-2.png",
-    make: "Nissan",
-    mileage: 22000,
-    model: "Altima",
-    owners: 1,
-    price: 21000,
-    transmission: "CVT",
-    year: 2020,
-    rating: 5,
-  },
-  {
-    color: "White",
-    engine: "2.0L 4-cylinder",
-    fuelType: "Diesel",
-    horsepower: 255,
-    id: 6,
-    image:
-      "https://cdn.dicklovett.co.uk/uploads/new_vehicle/11_10_s.png?v=1731495518",
-    make: "BMW",
-    mileage: 12000,
-    model: "3 Series",
-    owners: 1,
-    price: 40000,
-    transmission: "Automatic",
-    year: 2021,
-    rating: 5,
-  },
-  {
-    color: "Red",
-    engine: "Electric Motor",
-    fuelType: "Electric",
-    horsepower: 322,
-    id: 7,
-    image:
-      "https://germanmuscle.co/wp-content/uploads/2023/02/Vorsteiner-2017-2022-Tesla-Model-3-Volta-Aero-Side-Skirts-6-500x500.jpg",
-    make: "Tesla",
-    mileage: 8000,
-    model: "Model 3",
-    owners: 1,
-    price: 45000,
-    transmission: "Automatic",
-    year: 2022,
-    rating: 1,
-  },
-  {
-    color: "Gray",
-    engine: "2.0L 4-cylinder",
-    fuelType: "Gasoline",
-    horsepower: 248,
-    id: 8,
-    image:
-      "https://www.nationwidevehiclecontracts.co.uk/media/j0tkkkdu/the-new-audi-q5-1.jpg",
-    make: "Audi",
-    mileage: 15000,
-    model: "Q5",
-    owners: 1,
-    price: 38000,
-    transmission: "Automatic",
-    year: 2021,
-    rating: 4,
-  },
-  {
-    color: "Silver",
-    engine: "2.0L 4-cylinder",
-    fuelType: "Gasoline",
-    horsepower: 255,
-    id: 9,
-    image:
-      "https://5.imimg.com/data5/VL/BH/MY-33125588/mercedes-benz-e-class-500x500.png",
-    make: "Mercedes-Benz",
-    mileage: 18000,
-    model: "E-Class",
-    owners: 2,
-    price: 42000,
-    transmission: "Automatic",
-    year: 2020,
-    rating: 5,
-  },
-  {
-    color: "Black",
-    engine: "5.3L V8",
-    fuelType: "Gasoline",
-    horsepower: 355,
-    id: 10,
-    image:
-      "https://cfsm-image-service.s3.amazonaws.com/resized-chevroletnausenglishindexvehicles2025suvstahoerevealmov02imagestrimsvthree2025tahoetrimslsv3jpgimwidth419",
-    make: "Chevrolet",
-    mileage: 25000,
-    model: "Tahoe",
-    owners: 2,
-    price: 45000,
-    transmission: "Automatic",
-    year: 2020,
-    rating: 3,
-  },
-  {
-    color: "Green",
-    engine: "2.5L 4-cylinder",
-    fuelType: "Gasoline",
-    horsepower: 182,
-    id: 11,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDwVaVMivXFikIGqb_qikp32kII8NBIbPKGQ&s",
-    make: "Subaru",
-    mileage: 12000,
-    model: "Outback",
-    owners: 1,
-    price: 32000,
-    transmission: "CVT",
-    year: 2021,
-    rating: 5,
-  },
-  {
-    color: "White",
-    engine: "3.5L V6",
-    fuelType: "Gasoline",
-    horsepower: 295,
-    id: 12,
-    image:
-      "https://tmna.aemassets.toyota.com/is/image/toyota/lexus/images/models/rx/2025/styles/Lexus-RX-350-visualizer-styles-750x471-LEX-RXG-MY25-100603.png?wid=750&hei=471&fmt=png-alpha",
-    make: "Lexus",
-    mileage: 8000,
-    model: "RX 350",
-    owners: 1,
-    price: 48000,
-    transmission: "Automatic",
-    year: 2022,
-    rating: 2,
-  },
 ];
+
+jest.mock("react-select", () => {
+  return {
+    __esModule: true,
+    default: () => <div>Mocked ReactSelect</div>, // Mock react-select for testing
+  };
+});
+
+describe("AllCars Component", () => {
+  test("renders without crashing empty cars array", () => {
+    render(
+      <AllCars title="All Cars" description="Explore our cars" cars={[]} />
+    );
+    const element = screen.getByTestId("all-cars");
+    expect(element).toBeInTheDocument();
+  });
+  test("renders without crashing not empty cars array", () => {
+    render(
+      <AllCars
+        title="All Cars"
+        description="Explore our cars"
+        cars={mockData}
+      />
+    );
+    const element = screen.getByTestId("all-cars");
+    expect(element).toBeInTheDocument();
+  });
+});

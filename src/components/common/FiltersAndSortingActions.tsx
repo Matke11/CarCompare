@@ -1,6 +1,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import { SelectType } from "./common";
+import { SelectType } from "./common.types";
 import { CSSObjectWithLabel } from "react-select";
 
 const Select = dynamic(() => import("react-select"), { ssr: false });

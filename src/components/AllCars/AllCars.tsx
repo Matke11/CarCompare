@@ -1,12 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import SectionHeaderV1 from "../common/SectionHeaderV1";
-import { CtaType, SelectType } from "../common/common";
+import { CtaType, SelectType } from "../common/common.types";
 import CarCard from "../common/CarCard";
 import FiltersAndSorting from "../common/FiltersAndSortingActions";
 import SidePanel from "../common/sidepanel/SidePanel";
-import { CarCardType } from "@/data/global";
+import { CarCardType } from "@/data/global.types";
 
 interface TopCarsComponentProps {
   title: string;
@@ -125,7 +125,11 @@ const AllCars = ({
             years={years}
           />
 
-          <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          <section
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+            // [data-testid="all-cars"]
+            data-testid="all-cars"
+          >
             {filteredCars.length > 0 ? (
               filteredCars.map((car, index) => (
                 <CarCard

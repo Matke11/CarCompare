@@ -1,3 +1,5 @@
+import React from "react";
+
 interface SectionHeaderV1Props {
   title: string;
   description: string;

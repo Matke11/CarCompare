@@ -1,4 +1,5 @@
-import { CarCardType } from "@/data/global";
+import React from "react";
+import { CarCardType } from "@/data/global.types";
 
 interface CarCardProps {
   index: number;
