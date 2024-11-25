@@ -1,5 +1,5 @@
 import AllCars from "@/components/AllCars/AllCars";
-import BannerSection from "@/components/common/BannerSection";
+// import BannerSection from "@/components/common/BannerSection";
 import { mockCarsData } from "@/data/cars";
 
 export default async function Home() {
