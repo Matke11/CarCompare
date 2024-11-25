@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
       "germanmuscle.co",
       "www.nationwidevehiclecontracts.co.uk",
       "cfsm-image-service.s3.amazonaws.com",
+      "encrypted-tbn0.gstatic.com",
+      "tmna.aemassets.toyota.com",
+      "fakeimg.pl",
     ],
   },
 };
