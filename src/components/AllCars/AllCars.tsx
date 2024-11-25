@@ -2,25 +2,19 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import SectionHeaderV1 from "../common/SectionHeaderV1";
-import { CtaType, SelectType } from "../common/common.types";
+import { SelectType } from "../common/common.types";
 import CarCard from "../common/CarCard";
 import FiltersAndSorting from "../common/FiltersAndSortingActions";
 import SidePanel from "../common/sidepanel/SidePanel";
-import { CarCardType } from "@/data/global.types";
+import { CarCardType } from "../global.types";
 
 interface TopCarsComponentProps {
   title: string;
   description: string;
   cars: CarCardType[];
-  actionButtonsInformation?: CtaType;
 }
 
-const AllCars = ({
-  title,
-  description,
-  cars,
-  actionButtonsInformation,
-}: TopCarsComponentProps) => {
+const AllCars = ({ title, description, cars }: TopCarsComponentProps) => {
   const [selectedMake, setSelectedMake] = useState({
     value: "",
     label: "All Makes",
@@ -40,6 +34,7 @@ const AllCars = ({
   const [sidePanelState, setSidePanelState] = useState(false);
   const [selectedCars, setSelectedCars] = useState<CarCardType[]>([]);
   const [filteredCars, setFilteredCars] = useState<CarCardType[]>([]);
+  const [visibleCount, setVisibleCount] = useState(10);
 
   const sortingOptions = [
     {
@@ -131,15 +126,17 @@ const AllCars = ({
             data-testid="all-cars"
           >
             {filteredCars.length > 0 ? (
-              filteredCars.map((car, index) => (
-                <CarCard
-                  key={car.id}
-                  index={index}
-                  car={car}
-                  selectedCars={selectedCars}
-                  handleCheckboxChange={handleSelectUnselectCar}
-                />
-              ))
+              filteredCars
+                .slice(0, visibleCount)
+                .map((car, index) => (
+                  <CarCard
+                    key={car.id}
+                    index={index}
+                    car={car}
+                    selectedCars={selectedCars}
+                    handleCheckboxChange={handleSelectUnselectCar}
+                  />
+                ))
             ) : (
               <div className="col-span-full flex justify-center items-center p-6 bg-gray-100 rounded-md shadow-md">
                 <p className="text-lg font-semibold text-gray-600">
@@ -149,15 +146,15 @@ const AllCars = ({
               </div>
             )}
           </section>
-
-          {actionButtonsInformation && (
-            <div className="mt-8 text-center">
-              <Link
-                href={actionButtonsInformation.linkTo}
-                className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md"
+          {filteredCars.length > visibleCount && (
+            <div className="flex justify-center mt-6">
+              <button
+                disabled={cars.length <= visibleCount}
+                onClick={() => setVisibleCount((prevCount) => prevCount + 10)}
+                className={`px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700`}
               >
-                {actionButtonsInformation.text}
-              </Link>
+                Load More
+              </button>
             </div>
           )}
         </div>

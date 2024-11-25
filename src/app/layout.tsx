@@ -61,13 +61,13 @@ export default function RootLayout({
             __html: JSON.stringify(structuredData),
           }}
         ></script>
-        <link rel="canonical" href="https://car-compare.vercel.app/cars" />
+        <link rel="canonical" href="https://car-compare.vercel.app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
+        {/* <Header /> */}
         {children}
       </body>
     </html>
