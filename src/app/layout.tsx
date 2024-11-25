@@ -8,11 +8,13 @@ const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
+  display: "swap",
 });
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+  display: "swap",
 });
 
 const structuredData = {
@@ -32,7 +34,7 @@ const structuredData = {
 export const metadata: Metadata = {
   title: "Car Compare",
   description:
-    "Compare cars side by side to find the best model for your needs. Easily compare car brands, models, prices, and more.",
+    "Easily compare car brands,  car models, car deals, car prices, car reviews and more. Find your next car today!",
   keywords:
     "car comparison, car brands, car models, best car deals, car prices, car reviews",
   robots: "index, follow",
@@ -40,10 +42,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Car Compare",
     description:
-      "Find the best car deals by comparing various models based on prices, features, and more.",
+      "Easily compare car brands,  car models, car deals, car prices, car reviews and more. Find your next car today!",
     url: "https://car-compare.vercel.app/",
     type: "website",
-    images: "/path-to-your-image.jpg",
+    images: "https://car-compare.vercel.app/og-image.jpg",
   },
 };
 
@@ -61,7 +63,7 @@ export default function RootLayout({
             __html: JSON.stringify(structuredData),
           }}
         ></script>
-        <link rel="canonical" href="https://car-compare.vercel.app" />
+        <link rel="canonical" href="https://car-compare.vercel.app/" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body
