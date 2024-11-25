@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-// import Link from "next/link";
 import SectionHeaderV1 from "../common/SectionHeaderV1";
 import { SelectType } from "../common/common.types";
 import CarCard from "../common/CarCard";
