@@ -1,5 +1,6 @@
 import React from "react";
 import { CarCardType } from "../global.types";
+import Image from "next/image";
 
 interface CarCardProps {
   index: number;
@@ -38,7 +39,7 @@ const CarCard = ({
       )}
 
       <div className="relative w-full h-48 bg-gray-200">
-        <img
+        <Image
           src={image || "https://via.placeholder.com/400x250?text=Car+Image"}
           alt={`Car ${index + 1}`}
           className="object-cover w-full h-full rounded-t-lg"

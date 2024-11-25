@@ -1,6 +1,7 @@
 import React from "react";
 import "./SidePanel.css";
 import { CarCardType } from "@/components/global.types";
+import Image from "next/image";
 
 interface SidePanelProps {
   isOpen: boolean;
@@ -75,7 +76,7 @@ const SidePanel: React.FC<SidePanelProps> = ({
                       />
                     </svg>
                   </button>
-                  <img
+                  <Image
                     src={car.image || "https://via.placeholder.com/150"}
                     alt={`${car.make} ${car.model}`}
                     loading="lazy"
